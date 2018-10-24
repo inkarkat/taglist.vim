@@ -3357,13 +3357,9 @@ function! s:Tlist_Window_Open_File(win_ctrl, filename, tagpat)
         mark '
         silent call search(a:tagpat, 'w')
 
-        " Bring the line to the middle of the window
-        normal! z.
-
         " If the line is inside a fold, open the fold
-        if foldclosed('.') != -1
-            .foldopen
-        endif
+        " Bring the line to the middle of the window
+        normal! zvzz
     endif
 
     " If the user selects to preview the tag then jump back to the
@@ -4575,12 +4571,8 @@ function! s:Tlist_Menu_Jump_To_Tag(tidx)
     silent call search(tagpat, 'w')
 
     " Bring the line to the middle of the window
-    normal! z.
-
     " If the line is inside a fold, open the fold
-    if foldclosed('.') != -1
-        .foldopen
-    endif
+    normal! zvzz
 endfunction
 
 " Tlist_Menu_Init
